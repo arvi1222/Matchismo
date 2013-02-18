@@ -48,9 +48,10 @@
 #define MISMATCH_PENALTY 2
 #define FLIP_COST 1
 
--(void) flipCardAtIndex:(NSUInteger)index
+-(NSString *) flipCardAtIndex:(NSUInteger)index
 {
     Card *card = [self cardAtIndex:index];
+    NSString *result = @"";
     
     if (!card.isUnplayable) {
         if (!card.isFaceUp) {
@@ -61,18 +62,22 @@
                         otherCard.unplayable = YES;
                         card.unplayable = YES;
                         self.score += matchScore * MATCH_BONUS;
+                        result = [NSString stringWithFormat:@"Matched %@ & %@ for %d points.", card.contents, otherCard.contents, matchScore * MATCH_BONUS];
                     }
                     else {
                         otherCard.faceUp = NO;
-                        self.score -= matchScore * MISMATCH_PENALTY;
+                        self.score -= MISMATCH_PENALTY;
+                        result = [NSString stringWithFormat:@"%@ and %@ don't match! %d point penalty!", card.contents, otherCard.contents, MISMATCH_PENALTY];
                     }
                     break;
                 }
+                else result = [NSString stringWithFormat:@"Flipped up %@", card.contents];
             }
             self.score -= FLIP_COST;
         }
         card.faceUp = !card.isFaceUp;
     }
+    return result;
 }
 
 @end

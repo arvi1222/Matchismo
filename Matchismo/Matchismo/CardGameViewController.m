@@ -14,9 +14,11 @@
 @interface CardGameViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (nonatomic) int flipCount;
+@property (strong, nonatomic) NSString *flipResult;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *resultsLabel;
 @end
 
 @implementation CardGameViewController
@@ -36,6 +38,10 @@
     [self updateUI];
 }
 
+#define MATCH_POINTS 16
+#define MISMATCH_POINTS 4
+#define FLIP_POINTS -1
+
 - (void)updateUI
 {
     for (UIButton *cardButton in self.cardButtons) {
@@ -46,6 +52,7 @@
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha = card.isUnplayable ? 0.3:1.0;
         self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+        self.resultsLabel.text = self.flipResult;
     }
 }
 
@@ -56,9 +63,17 @@
 }
 
 - (IBAction)flipCard:(UIButton *)sender {
-    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    self.flipResult = [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     [self updateUI];
     self.flipCount++;
+}
+
+- (IBAction)dealPressed:(id)sender {
+    self.game = [[CardMatchingGame alloc]initWithCardCount:self.cardButtons.count
+                                                 usingDeck:[[PlayingCardDeck alloc]init]];
+    self.flipCount = 0;
+    self.flipResult = @"";
+    [self updateUI];
 }
 
 @end
