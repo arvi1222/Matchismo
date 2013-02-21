@@ -77,6 +77,9 @@
 }
 
 - (IBAction)matchModePressed:(id)sender {
+    UISegmentedControl* segmentControl = sender;
+    NSLog(@"The card mode is %d", segmentControl.selectedSegmentIndex); //0 is 2 card, 1 is 3 card
+    self.game.gameMode = segmentControl.selectedSegmentIndex;
 }
 
 @end

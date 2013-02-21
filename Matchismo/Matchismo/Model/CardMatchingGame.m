@@ -53,6 +53,9 @@
     Card *card = [self cardAtIndex:index];
     NSString *result = @"";
     
+    //delete me later
+    NSLog(@"Game mode is: %d", self.gameMode);
+    
     if (!card.isUnplayable) {
         if (!card.isFaceUp) {
             for (Card *otherCard in self.cards) {
