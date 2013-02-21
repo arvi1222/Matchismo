@@ -76,4 +76,7 @@
     [self updateUI];
 }
 
+- (IBAction)matchModePressed:(id)sender {
+}
+
 @end
