@@ -320,6 +320,7 @@
                     </view>
                     <connections>
                         <outlet property="flipsLabel" destination="Wdc-AU-tjt" id="y5L-Wv-v9m"/>
+                        <outlet property="gameModeSelector" destination="QIE-bs-zFw" id="BTa-cv-W9m"/>
                         <outlet property="resultsLabel" destination="3Lr-1e-hKy" id="4ad-N5-aee"/>
                         <outlet property="scoreLabel" destination="tW6-9j-n1Y" id="j8T-eK-PYQ"/>
                         <outletCollection property="cardButtons" destination="TsD-hL-cbJ" id="fBC-9V-MKS"/>
@@ -342,7 +343,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-322" y="-831"/>
+            <point key="canvasLocation" x="-637" y="-806"/>
         </scene>
     </scenes>
     <classes>
@@ -353,6 +354,7 @@
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="action" name="matchModePressed:"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="gameModeSelector" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="resultsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>

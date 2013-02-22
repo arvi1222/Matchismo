@@ -12,6 +12,7 @@
 #import "CardMatchingGame.h"
 
 @interface CardGameViewController ()
+@property (nonatomic) BOOL gameStarted;
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (nonatomic) int flipCount;
 @property (strong, nonatomic) NSString *flipResult;
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *resultsLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *gameModeSelector;
 @end
 
 @implementation CardGameViewController
@@ -63,6 +65,11 @@
 }
 
 - (IBAction)flipCard:(UIButton *)sender {
+    if (!self.gameStarted) {
+        self.gameStarted = YES;
+        self.gameModeSelector.enabled = NO;
+        self.gameModeSelector.alpha = 0.3;
+    }
     self.flipResult = [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     [self updateUI];
     self.flipCount++;
@@ -76,6 +83,9 @@
     self.flipCount = 0;
     self.flipResult = @"";
     [self updateUI];
+    self.gameModeSelector.enabled = YES;
+    self.gameModeSelector.alpha = 1.0;
+    self.gameStarted = NO;
 }
 
 - (IBAction)matchModePressed:(id)sender {
