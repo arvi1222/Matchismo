@@ -20,6 +20,8 @@
         else if (self.rank == otherCard.rank) score = 4;
     }
     
+    //need to implement if (otherCards.count == 2)
+    
     return score;
 }
 

@@ -10,6 +10,7 @@
 
 @interface CardMatchingGame()
 @property (strong, nonatomic)NSMutableArray *cards;
+@property (strong, nonatomic)NSMutableArray *flippedCards;
 @property (nonatomic) int score;
 @end
 
@@ -21,6 +22,14 @@
         _cards = [[NSMutableArray alloc]init];
     }
     return _cards;
+}
+
+- (NSMutableArray *) flippedCards
+{
+    if(!_flippedCards) {
+        _flippedCards = [[NSMutableArray alloc]init];
+    }
+    return _flippedCards;
 }
 
 - (id)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck
@@ -44,9 +53,12 @@
     return (index < self.cards.count) ? self.cards[index] : nil;
 }
 
-#define MATCH_BONUS 4
+#define MATCH_BONUS_2 4
+#define MATCH_BONUS_3 9
 #define MISMATCH_PENALTY 2
 #define FLIP_COST 1
+#define TWO_CARD_MODE 0
+#define THREE_CARD_MODE 1
 
 -(NSString *) flipCardAtIndex:(NSUInteger)index
 {
@@ -56,7 +68,8 @@
     //delete me later
     NSLog(@"Game mode is: %d", self.gameMode);
     
-    if (!card.isUnplayable) {
+    if (self.gameMode == TWO_CARD_MODE) {
+        if (!card.isUnplayable) {
         if (!card.isFaceUp) {
             for (Card *otherCard in self.cards) {
                 if(otherCard.isFaceUp && !otherCard.isUnplayable) {
@@ -64,8 +77,8 @@
                     if (matchScore) {
                         otherCard.unplayable = YES;
                         card.unplayable = YES;
-                        self.score += matchScore * MATCH_BONUS;
-                        result = [NSString stringWithFormat:@"Matched %@ & %@ for %d points.", card.contents, otherCard.contents, matchScore * MATCH_BONUS];
+                        self.score += matchScore * MATCH_BONUS_2;
+                        result = [NSString stringWithFormat:@"Matched %@ & %@ for %d points.", card.contents, otherCard.contents, matchScore * MATCH_BONUS_2];
                     }
                     else {
                         otherCard.faceUp = NO;
@@ -79,6 +92,43 @@
             self.score -= FLIP_COST;
         }
         card.faceUp = !card.isFaceUp;
+    }
+    return result;
+    } else if (self.gameMode == THREE_CARD_MODE) {
+        //return @"You are in Three card mode";
+        //need to add if card gets flipped back over
+        if (!card.isUnplayable) {
+            if (!card.isFaceUp) {
+                if (self.flippedCards.count == 2) {
+                    NSLog(@"There are 2 cards in flippedCards");
+                    int matchScore = [card match:self.flippedCards];
+                    if (matchScore) {
+                        Card *matchedCard1 = self.flippedCards[0];
+                        Card *matchedCard2 = self.flippedCards[1];
+                        matchedCard1.unplayable = YES;
+                        matchedCard2.unplayable = YES;
+                        card.unplayable = YES;
+                        self.score += matchScore * MATCH_BONUS_3;
+                        result = [NSString stringWithFormat:@"Matched %@ & %@ & %@ for %d points.", card.contents, matchedCard1.contents, matchedCard2.contents, matchScore * MATCH_BONUS_2];
+                    }
+                    else {
+                        for (Card *matchedCard in self.flippedCards) matchedCard.faceUp = NO;
+                        self.score -= MISMATCH_PENALTY;
+                        Card *matchedCard1 = self.flippedCards[0];
+                        Card *matchedCard2 = self.flippedCards[1];
+                        result = [NSString stringWithFormat:@"%@, %@ and %@ don't match! %d point penalty!", card.contents, matchedCard1.contents, matchedCard2.contents, MISMATCH_PENALTY];
+                    }
+                    [self.flippedCards removeAllObjects];
+                }
+                else result = [NSString stringWithFormat:@"Flipped up %@", card.contents];
+                NSLog(@"There are less than 2 cards in flippedCards");
+                [self.flippedCards addObject:card];
+                
+                self.score -= FLIP_COST;
+            }
+            else [self.flippedCards removeLastObject];
+            card.faceUp = !card.isFaceUp;
+        }
     }
     return result;
 }
