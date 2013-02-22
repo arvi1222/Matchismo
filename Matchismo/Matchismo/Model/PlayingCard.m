@@ -24,8 +24,8 @@
     if (otherCards.count == 2) {
         PlayingCard *otherCard1 = otherCards[0];
         PlayingCard *otherCard2 = otherCards[1];
-        if ([self.suit isEqualToString:otherCard1.suit] && [self.suit isEqualToString:otherCard2.suit]) score = 3;
-        else if (self.rank == otherCard1.rank && self.rank == otherCard2.rank) score = 12;
+        if ([self.suit isEqualToString:otherCard1.suit] && [self.suit isEqualToString:otherCard2.suit]) score = 1;
+        else if (self.rank == otherCard1.rank && self.rank == otherCard2.rank) score = 4;
     }
     
     return score;

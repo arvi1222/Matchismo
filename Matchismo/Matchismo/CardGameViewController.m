@@ -69,8 +69,10 @@
 }
 
 - (IBAction)dealPressed:(id)sender {
+    int temp = self.game.gameMode;
     self.game = [[CardMatchingGame alloc]initWithCardCount:self.cardButtons.count
                                                  usingDeck:[[PlayingCardDeck alloc]init]];
+    self.game.gameMode = temp;
     self.flipCount = 0;
     self.flipResult = @"";
     [self updateUI];

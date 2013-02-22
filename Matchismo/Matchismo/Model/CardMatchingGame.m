@@ -109,7 +109,8 @@
                         matchedCard2.unplayable = YES;
                         card.unplayable = YES;
                         self.score += matchScore * MATCH_BONUS_3;
-                        result = [NSString stringWithFormat:@"Matched %@ & %@ & %@ for %d points.", card.contents, matchedCard1.contents, matchedCard2.contents, matchScore * MATCH_BONUS_2];
+                        result = [NSString stringWithFormat:@"Matched %@ & %@ & %@ for %d points.", card.contents, matchedCard1.contents, matchedCard2.contents, matchScore * MATCH_BONUS_3];
+                        [self.flippedCards removeAllObjects];
                     }
                     else {
                         for (Card *matchedCard in self.flippedCards) matchedCard.faceUp = NO;
@@ -117,12 +118,15 @@
                         Card *matchedCard1 = self.flippedCards[0];
                         Card *matchedCard2 = self.flippedCards[1];
                         result = [NSString stringWithFormat:@"%@, %@ and %@ don't match! %d point penalty!", card.contents, matchedCard1.contents, matchedCard2.contents, MISMATCH_PENALTY];
+                        [self.flippedCards removeAllObjects];
+                        [self.flippedCards addObject:card];
                     }
-                    [self.flippedCards removeAllObjects];
                 }
-                else result = [NSString stringWithFormat:@"Flipped up %@", card.contents];
-                NSLog(@"There are less than 2 cards in flippedCards");
-                [self.flippedCards addObject:card];
+                else {
+                    result = [NSString stringWithFormat:@"Flipped up %@", card.contents];
+                    NSLog(@"There are less than 2 cards in flippedCards");
+                    [self.flippedCards addObject:card];
+                }
                 
                 self.score -= FLIP_COST;
             }
