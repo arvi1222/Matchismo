@@ -130,7 +130,7 @@
                 
                 self.score -= FLIP_COST;
             }
-            else [self.flippedCards removeLastObject];
+            else [self.flippedCards removeObject:card];
             card.faceUp = !card.isFaceUp;
         }
     }
