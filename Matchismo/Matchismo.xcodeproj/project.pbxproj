@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		726EC9B316D7E57C0090AC79 /* card_back.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 726EC9B216D7E57C0090AC79 /* card_back.jpeg */; };
+		729FFFD516E823D500537760 /* SetGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 729FFFD416E823D500537760 /* SetGameViewController.m */; };
 		72D900C016C349E300500BD1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D900BF16C349E300500BD1 /* UIKit.framework */; };
 		72D900C216C349E300500BD1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D900C116C349E300500BD1 /* Foundation.framework */; };
 		72D900C416C349E300500BD1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D900C316C349E300500BD1 /* CoreGraphics.framework */; };
@@ -28,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		726EC9B216D7E57C0090AC79 /* card_back.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = card_back.jpeg; path = ../../../../Downloads/card_back.jpeg; sourceTree = "<group>"; };
+		729FFFD316E823D500537760 /* SetGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetGameViewController.h; sourceTree = "<group>"; };
+		729FFFD416E823D500537760 /* SetGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetGameViewController.m; sourceTree = "<group>"; };
 		72D900BC16C349E300500BD1 /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72D900BF16C349E300500BD1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		72D900C116C349E300500BD1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -104,6 +107,8 @@
 				72D900CF16C349E300500BD1 /* CardGameAppDelegate.m */,
 				72D900D716C349E400500BD1 /* MainStoryboard.storyboard */,
 				72D900E516C367E100500BD1 /* Model */,
+				729FFFD316E823D500537760 /* SetGameViewController.h */,
+				729FFFD416E823D500537760 /* SetGameViewController.m */,
 				72D900DA16C349E400500BD1 /* CardGameViewController.h */,
 				72D900DB16C349E400500BD1 /* CardGameViewController.m */,
 				72D900C616C349E300500BD1 /* Supporting Files */,
@@ -219,6 +224,7 @@
 				72D900EB16C36DBB00500BD1 /* PlayingCard.m in Sources */,
 				72D900EE16C374F600500BD1 /* PlayingCardDeck.m in Sources */,
 				72FEAF7216CF80800029D573 /* CardMatchingGame.m in Sources */,
+				729FFFD516E823D500537760 /* SetGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
