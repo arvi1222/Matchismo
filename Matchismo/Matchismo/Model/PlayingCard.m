@@ -20,7 +20,6 @@
         else if (self.rank == otherCard.rank) score = 4;
     }
     
-    //need to implement if (otherCards.count == 2)
     if (otherCards.count == 2) {
         PlayingCard *otherCard1 = otherCards[0];
         PlayingCard *otherCard2 = otherCards[1];
