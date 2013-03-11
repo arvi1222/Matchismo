@@ -65,9 +65,6 @@
     Card *card = [self cardAtIndex:index];
     NSString *result = @"";
     
-    //delete me later
-    NSLog(@"Game mode is: %d", self.gameMode);
-    
     if (self.gameMode == TWO_CARD_MODE) {
         if (!card.isUnplayable) {
         if (!card.isFaceUp) {
@@ -100,7 +97,6 @@
         if (!card.isUnplayable) {
             if (!card.isFaceUp) {
                 if (self.flippedCards.count == 2) {
-                    NSLog(@"There are 2 cards in flippedCards");
                     int matchScore = [card match:self.flippedCards];
                     if (matchScore) {
                         Card *matchedCard1 = self.flippedCards[0];
@@ -124,7 +120,6 @@
                 }
                 else {
                     result = [NSString stringWithFormat:@"Flipped up %@", card.contents];
-                    NSLog(@"There are less than 2 cards in flippedCards");
                     [self.flippedCards addObject:card];
                 }
                 
