@@ -12,7 +12,9 @@
 
 @property (strong, nonatomic) NSString *color;
 @property (strong, nonatomic) NSString *shape; //may need to be an attributed string
-@property (nonatomic) NSUInteger count;
+@property (strong, nonatomic) NSNumber *filled; //unwrap using NSNumbers boolValue method
+
+@property (nonatomic) NSNumber *count;
 
 + (NSArray *) validShapes;
 + (NSArray *) validColor;

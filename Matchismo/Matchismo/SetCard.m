@@ -20,17 +20,17 @@
     return score;
 }
 
-- (NSAttributedString *)contents //need to finish
+- (NSDictionary *)contents //need to finish
 {
-    return [[NSAttributedString alloc] initWithString:@"finish me"];
+    return @{@"color" : self.color, @"shape" : self.shape, @"count" : self.count, @"filled" : self.filled};
 }
 
 @synthesize shape = _shape;
 
-+ (NSArray *)validShapes //need to finish
++ (NSArray *)validShapes
 {
     static NSArray *validShapes = nil;
-    if (!validShapes) validShapes = @[@"square"];
+    if (!validShapes) validShapes = @[@"☐", @"◯", @"△"];
     return validShapes;
 }
 
@@ -48,10 +48,10 @@
 
 @synthesize color = _color;
 
-+ (NSArray *)validColor //need to finish
++ (NSArray *)validColor
 {
     static NSArray *validColor = nil;
-    if (!validColor) validColor = @[@"square"];
+    if (!validColor) validColor = @[@"greenColor", @"redColor", @"blueColor"];
     return validColor;
 }
 
@@ -71,9 +71,9 @@
 
 + (NSUInteger)maxCount { return MAX_COUNT; }
 
-- (void)setCount:(NSUInteger)count
+- (void)setCount:(NSNumber*)count
 {
-    if (count <= [SetCard maxCount]) _count = count;
+    if ([count intValue]  <= [SetCard maxCount]) _count = count;
 }
 
 @end
