@@ -14,8 +14,8 @@
 @property (strong, nonatomic) NSString *shape; //may need to be an attributed string
 @property (nonatomic) NSUInteger count;
 
-+ (NSArray *)validShapes;
-+ (NSArray *)validColor;
++ (NSArray *) validShapes;
++ (NSArray *) validColor;
 + (NSUInteger)maxCount;
 
 @end

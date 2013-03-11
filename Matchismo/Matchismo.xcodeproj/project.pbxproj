@@ -110,10 +110,10 @@
 				72D900CF16C349E300500BD1 /* CardGameAppDelegate.m */,
 				72D900D716C349E400500BD1 /* MainStoryboard.storyboard */,
 				72D900E516C367E100500BD1 /* Model */,
-				729FFFD316E823D500537760 /* SetGameViewController.h */,
-				729FFFD416E823D500537760 /* SetGameViewController.m */,
 				72D900DA16C349E400500BD1 /* CardGameViewController.h */,
 				72D900DB16C349E400500BD1 /* CardGameViewController.m */,
+				729FFFD316E823D500537760 /* SetGameViewController.h */,
+				729FFFD416E823D500537760 /* SetGameViewController.m */,
 				72D900C616C349E300500BD1 /* Supporting Files */,
 			);
 			path = Matchismo;
@@ -137,18 +137,18 @@
 		72D900E516C367E100500BD1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				729842FC16ED905B003E59DF /* SetCard.h */,
-				729842FD16ED905B003E59DF /* SetCard.m */,
 				72FEAF7016CF80800029D573 /* CardMatchingGame.h */,
 				72FEAF7116CF80800029D573 /* CardMatchingGame.m */,
 				72D900E216C3665B00500BD1 /* Card.h */,
 				72D900E316C3665B00500BD1 /* Card.m */,
 				72D900E916C36DBB00500BD1 /* PlayingCard.h */,
 				72D900EA16C36DBB00500BD1 /* PlayingCard.m */,
-				72D900EC16C374F600500BD1 /* PlayingCardDeck.h */,
-				72D900ED16C374F600500BD1 /* PlayingCardDeck.m */,
+				729842FC16ED905B003E59DF /* SetCard.h */,
+				729842FD16ED905B003E59DF /* SetCard.m */,
 				72D900E616C3689500500BD1 /* Deck.h */,
 				72D900E716C3689500500BD1 /* Deck.m */,
+				72D900EC16C374F600500BD1 /* PlayingCardDeck.h */,
+				72D900ED16C374F600500BD1 /* PlayingCardDeck.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
