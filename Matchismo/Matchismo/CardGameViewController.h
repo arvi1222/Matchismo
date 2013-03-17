@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlayingCard.h"
+#import "PlayingCardDeck.h"
 
 @interface CardGameViewController : UIViewController
+
+- (Deck *)makeCardDeck;
+- (void)updateCardButton:(UIButton *)cardButton withCard:(Card *)card;
 
 @end

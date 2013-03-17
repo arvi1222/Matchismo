@@ -7,8 +7,6 @@
 //
 
 #import "CardGameViewController.h"
-#import "PlayingCardDeck.h"
-#import "PlayingCard.h"
 #import "CardMatchingGame.h"
 
 @interface CardGameViewController ()
@@ -29,9 +27,15 @@
 {
     if (!_game) {
         _game = [[CardMatchingGame alloc]initWithCardCount:self.cardButtons.count
-                                                 usingDeck:[[PlayingCardDeck alloc]init]];
+                                                 usingDeck:[self makeCardDeck]];
     }
     return _game;
+}
+
+- (Deck *)makeCardDeck
+{
+    //implemented in subclass
+    return nil;
 }
 
 - (void)setCardButtons:(NSArray *)cardButtons
@@ -40,18 +44,23 @@
     [self updateUI];
 }
 
+- (void)updateCardButton:(UIButton *)cardButton withCard:(Card *)card
+{
+    //implemented in subclass
+}
+
 - (void)updateUI
 {
-    UIImage *cardBackImage = [UIImage imageNamed:@"card_back.jpeg"];
     for (UIButton *cardButton in self.cardButtons) {
         Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
-        [cardButton setTitle:card.contents forState:UIControlStateSelected];
+        [self updateCardButton:cardButton withCard:card];
+ /*       [cardButton setTitle:card.contents forState:UIControlStateSelected];
         [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
         cardButton.selected = card.isFaceUp;
         if (!cardButton.isSelected)[cardButton setImage:cardBackImage forState:UIControlStateNormal];
         else [cardButton setImage:nil forState:UIControlStateNormal];
         cardButton.enabled = !card.isUnplayable;
-        cardButton.alpha = card.isUnplayable ? 0.3:1.0;
+        cardButton.alpha = card.isUnplayable ? 0.3:1.0;   */
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     self.resultsLabel.text = self.flipResult;
