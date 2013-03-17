@@ -40,10 +40,6 @@
     [self updateUI];
 }
 
-#define MATCH_POINTS 16
-#define MISMATCH_POINTS 4
-#define FLIP_POINTS -1
-
 - (void)updateUI
 {
     UIImage *cardBackImage = [UIImage imageNamed:@"card_back.jpeg"];

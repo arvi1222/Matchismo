@@ -92,8 +92,6 @@
     }
     return result;
     } else if (self.gameMode == THREE_CARD_MODE) {
-        //return @"You are in Three card mode";
-        //need to add if card gets flipped back over
         if (!card.isUnplayable) {
             if (!card.isFaceUp) {
                 if (self.flippedCards.count == 2) {
