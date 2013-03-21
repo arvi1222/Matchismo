@@ -14,5 +14,6 @@
 
 - (Deck *)makeCardDeck;
 - (void)updateCardButton:(UIButton *)cardButton withCard:(Card *)card;
+- (NSString *)makeFlipResultString:(NSString*) flipResults;
 
 @end

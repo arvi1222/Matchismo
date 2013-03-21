@@ -49,6 +49,12 @@
     //implemented in subclass
 }
 
+- (NSString *)makeFlipResultString:(NSString*) flipResults
+{
+    //implemented in subclass
+    return nil;
+}
+
 - (void)updateUI
 {
     for (UIButton *cardButton in self.cardButtons) {
@@ -78,7 +84,8 @@
         self.gameModeSelector.enabled = NO;
         self.gameModeSelector.alpha = 0.3;
     }
-    self.flipResult = [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    self.flipResult = [self makeFlipResultString:[self.game flippedCardsResult]];
     [self updateUI];
     self.flipCount++;
 }
