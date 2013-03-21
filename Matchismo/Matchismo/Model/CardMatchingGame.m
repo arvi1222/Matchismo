@@ -9,10 +9,9 @@
 #import "CardMatchingGame.h"
 
 @interface CardMatchingGame()
-@property (strong, nonatomic, readwrite)NSMutableArray *cards;
+@property (strong, nonatomic)NSMutableArray *cards;
 @property (strong, nonatomic)NSMutableArray *flippedCards;
-@property (nonatomic, readwrite) int score;
-@property (nonatomic, readwrite) NSString* flippedCardsResult;
+@property (nonatomic) int score;
 @end
 
 @implementation CardMatchingGame
@@ -61,7 +60,7 @@
 #define TWO_CARD_MODE 0
 #define THREE_CARD_MODE 1
 
--(void) flipCardAtIndex:(NSUInteger)index
+-(NSString *) flipCardAtIndex:(NSUInteger)index
 {
     Card *card = [self cardAtIndex:index];
     NSString *result = @"";
@@ -76,25 +75,22 @@
                         otherCard.unplayable = YES;
                         card.unplayable = YES;
                         self.score += matchScore * MATCH_BONUS_2;
-                        //result = [NSString stringWithFormat:@"Matched %@ & %@ for %d points.", card.contents, otherCard.contents, matchScore * MATCH_BONUS_2];
-                        self.flippedCardsResult = @"Match";
+                        result = [NSString stringWithFormat:@"Matched %@ & %@ for %d points.", card.contents, otherCard.contents, matchScore * MATCH_BONUS_2];
                     }
                     else {
                         otherCard.faceUp = NO;
                         self.score -= MISMATCH_PENALTY;
-                        //result = [NSString stringWithFormat:@"%@ and %@ don't match! %d point penalty!", card.contents, otherCard.contents, MISMATCH_PENALTY];
-                        self.flippedCardsResult = @"Mismatch";
+                        result = [NSString stringWithFormat:@"%@ and %@ don't match! %d point penalty!", card.contents, otherCard.contents, MISMATCH_PENALTY];
                     }
                     break;
                 }
-                //else result = [NSString stringWithFormat:@"Flipped up %@", card.contents];
-                else self.flippedCardsResult = @"Card Flipped";
+                else result = [NSString stringWithFormat:@"Flipped up %@", card.contents];
             }
             self.score -= FLIP_COST;
         }
         card.faceUp = !card.isFaceUp;
     }
-    //return result;
+    return result;
     } else if (self.gameMode == THREE_CARD_MODE) {
         if (!card.isUnplayable) {
             if (!card.isFaceUp) {
@@ -131,7 +127,7 @@
             card.faceUp = !card.isFaceUp;
         }
     }
-    //return result;
+    return result;
 }
 
 @end

@@ -32,17 +32,4 @@
     return deck;
 }
 
-#define MATCH_BONUS_2 4
-#define MATCH_BONUS_3 9
-#define MISMATCH_PENALTY 2
-#define FLIP_COST 1
-
-- (NSString *)makeFlipResultString:(NSString*) flipResults
-{
-    NSString *result = @"";
-    if ([flipResults isEqualToString: @"Match"]) {
-        result = [NSString stringWithFormat:@"Matched %@ & %@ for %d points.", super.game.cards[0].contents, super.game.cards[1].contents, matchScore * MATCH_BONUS_2];
-    }
-}
-
 @end
