@@ -78,7 +78,8 @@
         self.gameModeSelector.enabled = NO;
         self.gameModeSelector.alpha = 0.3;
     }
-    self.flipResult = [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    self.flipResult = self.game.flipCardResult;
     [self updateUI];
     self.flipCount++;
 }

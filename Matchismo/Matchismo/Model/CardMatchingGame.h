@@ -14,11 +14,12 @@
 - (id)initWithCardCount:(NSUInteger)cardCount
              usingDeck:(Deck *)deck;
 
-- (NSString *)flipCardAtIndex:(NSUInteger)index;
+- (void)flipCardAtIndex:(NSUInteger)index;
 
 - (Card *)cardAtIndex:(NSUInteger)index;
 
 @property (nonatomic, readonly) int score;
 @property (nonatomic) int gameMode;
+@property (nonatomic, strong) NSString *flipCardResult;
 
 @end
