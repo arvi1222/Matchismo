@@ -16,12 +16,12 @@
 
 - (void)updateCardButton:(UIButton *)cardButton withCard:(Card *)card
 {
-    
+    //implement me
 }
 
 - (Deck *)makeCardDeck
 {
-    Deck *deck = [[SetCardDeck alloc]init]; //implement setCardDeck
+    Deck *deck = [[SetCardDeck alloc]init];
     return deck;
 }
 
