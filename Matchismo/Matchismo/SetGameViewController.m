@@ -9,6 +9,8 @@
 #import "SetGameViewController.h"
 
 @interface SetGameViewController ()
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+
 
 @end
 
@@ -16,7 +18,16 @@
 
 - (void)updateCardButton:(UIButton *)cardButton withCard:(Card *)card
 {
-    //implement me
+    //not sure if this is correct
+    
+    [cardButton setTitle:card.contents forState:UIControlStateSelected];
+    [cardButton setTitle:card.contents forState:UIControlStateNormal];
+    cardButton.selected = card.isFaceUp;
+    if (!cardButton.isSelected) cardButton.alpha = 0.3;
+    cardButton.enabled = !card.isUnplayable;
+    cardButton.alpha = card.isUnplayable ? 0.0:1.0;
+     
+    
 }
 
 - (Deck *)makeCardDeck
